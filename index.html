@@ -45,14 +45,25 @@ tr:hover td { background: rgba(61,25,89,0.02); }
 .arch-card { background: var(--bg); border-radius: 8px; padding: 20px; }
 .arch-card h3 { font-size: 16px; color: var(--violet); margin-bottom: 12px; }
 .arch-card ul { list-style: none; }
-.arch-card li { padding: 6px 0; font-size: 14px; display: flex; justify-content: space-between; }
+.arch-card li { padding: 6px 0; font-size: 14px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px; }
 .arch-card li span:first-child { color: var(--text-secondary); }
+
+/* Tree styles */
+.tree-container { background: var(--bg); border-radius: 8px; padding: 20px; margin-top: 12px; }
 .tree-node { padding: 4px 0; font-size: 14px; font-family: 'SF Mono', Monaco, monospace; }
 .tree-node.root { font-weight: 700; color: var(--violet); font-size: 15px; margin-bottom: 4px; }
+.tree-toggle { cursor: pointer; user-select: none; transition: background 0.15s; border-radius: 4px; }
+.tree-toggle:hover { background: rgba(61,25,89,0.06); }
+.tree-toggle-icon { display: inline-block; width: 18px; color: var(--orange); font-size: 11px; text-align: center; transition: transform 0.2s; }
 .tree-folder { color: var(--violet); }
 .tree-file { color: var(--text-secondary); }
 .tree-size { color: #999; font-size: 12px; margin-left: 8px; }
+.tree-children { }
+.tree-parent.collapsed .tree-children { display: none; }
+.tree-parent.collapsed .tree-toggle-icon { transform: rotate(-90deg); }
 
+footer { text-align: center; padding: 40px 0; color: var(--text-secondary); font-size: 14px; }
+footer a { color: var(--orange); text-decoration: none; }
 @media (max-width: 768px) {
   .stats-grid { grid-template-columns: 1fr; }
   .arch-grid { grid-template-columns: 1fr; }
@@ -63,8 +74,8 @@ tr:hover td { background: rgba(61,25,89,0.02); }
 <div class="container">
   <header>
     <h1>Kimicito Status Dashboard</h1>
-    <p class="subtitle">Полный расклад по проектам, skills, памяти и интеграциям</p>
-    <p class="timestamp">Последнее обновление: 2026-06-21 06:53 UTC</p>
+    <p class="subtitle">Полный расклад по проектам, skills и интеграциям</p>
+    <p class="timestamp">Последнее обновление: 2026-06-21 07:02 UTC</p>
   </header>
   <div class="stats-grid">
     <div class="stat-card">
@@ -80,8 +91,8 @@ tr:hover td { background: rgba(61,25,89,0.02); }
       <div class="value">66</div>
     </div>
     <div class="stat-card">
-      <h3>Файлов памяти</h3>
-      <div class="value">59</div>
+      <h3>Директорий</h3>
+      <div class="value">34</div>
     </div>
   </div>
   <div class="section">
@@ -93,7 +104,7 @@ tr:hover td { background: rgba(61,25,89,0.02); }
           <td><strong>safemind</strong></td>
           <td><span class="path">/root/.openclaw/workspace/safemind</span></td>
           <td><span class="badge badge-success">clean</span></td>
-          <td>3e8fb66 chore: auto-sync 2026-06-20 22:30 UTC (8 hours ago)</td>
+          <td>3e8fb66 chore: auto-sync 2026-06-20 22:30 UTC (9 hours ago)</td>
         </tr>
         <tr>
           <td><strong>storewars-app</strong></td>
@@ -569,368 +580,6 @@ tr:hover td { background: rgba(61,25,89,0.02); }
     </div>
   </div>
   <div class="section">
-    <h2>🧠 Память и конфиги</h2>
-    <div class="table-wrap">
-      <table>
-        <tr><th>Файл</th><th>Путь</th><th>Размер</th><th>Изменён</th></tr>
-        <tr>
-          <td><strong>2026-04-04.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-04-04.md</span></td>
-          <td>9626 bytes</td>
-          <td>2026-04-04 21:52</td>
-        </tr>
-        <tr>
-          <td><strong>2026-04-05.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-04-05.md</span></td>
-          <td>2373 bytes</td>
-          <td>2026-04-05 15:13</td>
-        </tr>
-        <tr>
-          <td><strong>2026-04-10.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-04-10.md</span></td>
-          <td>2560 bytes</td>
-          <td>2026-04-10 13:20</td>
-        </tr>
-        <tr>
-          <td><strong>2026-04-11.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-04-11.md</span></td>
-          <td>10087 bytes</td>
-          <td>2026-04-11 20:37</td>
-        </tr>
-        <tr>
-          <td><strong>2026-04-12.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-04-12.md</span></td>
-          <td>9637 bytes</td>
-          <td>2026-04-12 21:10</td>
-        </tr>
-        <tr>
-          <td><strong>2026-04-13.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-04-13.md</span></td>
-          <td>2164 bytes</td>
-          <td>2026-04-13 01:56</td>
-        </tr>
-        <tr>
-          <td><strong>2026-04-14.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-04-14.md</span></td>
-          <td>2117 bytes</td>
-          <td>2026-04-14 03:25</td>
-        </tr>
-        <tr>
-          <td><strong>2026-04-15-1602.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-04-15-1602.md</span></td>
-          <td>11612 bytes</td>
-          <td>2026-04-16 00:02</td>
-        </tr>
-        <tr>
-          <td><strong>2026-04-18.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-04-18.md</span></td>
-          <td>2219 bytes</td>
-          <td>2026-04-18 17:37</td>
-        </tr>
-        <tr>
-          <td><strong>2026-04-19.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-04-19.md</span></td>
-          <td>1069 bytes</td>
-          <td>2026-04-19 13:51</td>
-        </tr>
-        <tr>
-          <td><strong>2026-04-20.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-04-20.md</span></td>
-          <td>1481 bytes</td>
-          <td>2026-04-20 13:26</td>
-        </tr>
-        <tr>
-          <td><strong>2026-04-21.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-04-21.md</span></td>
-          <td>1783 bytes</td>
-          <td>2026-04-21 23:57</td>
-        </tr>
-        <tr>
-          <td><strong>2026-04-25.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-04-25.md</span></td>
-          <td>1735 bytes</td>
-          <td>2026-04-25 17:20</td>
-        </tr>
-        <tr>
-          <td><strong>2026-04-26.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-04-26.md</span></td>
-          <td>1890 bytes</td>
-          <td>2026-04-26 22:41</td>
-        </tr>
-        <tr>
-          <td><strong>2026-04-28.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-04-28.md</span></td>
-          <td>1400 bytes</td>
-          <td>2026-04-28 12:11</td>
-        </tr>
-        <tr>
-          <td><strong>2026-05-02.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-05-02.md</span></td>
-          <td>1648 bytes</td>
-          <td>2026-05-02 02:35</td>
-        </tr>
-        <tr>
-          <td><strong>2026-05-09.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-05-09.md</span></td>
-          <td>1829 bytes</td>
-          <td>2026-05-09 17:45</td>
-        </tr>
-        <tr>
-          <td><strong>2026-05-10.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-05-10.md</span></td>
-          <td>11162 bytes</td>
-          <td>2026-05-10 12:22</td>
-        </tr>
-        <tr>
-          <td><strong>2026-05-11.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-05-11.md</span></td>
-          <td>2431 bytes</td>
-          <td>2026-05-11 21:19</td>
-        </tr>
-        <tr>
-          <td><strong>2026-05-12.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-05-12.md</span></td>
-          <td>3189 bytes</td>
-          <td>2026-05-13 00:09</td>
-        </tr>
-        <tr>
-          <td><strong>2026-05-13.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-05-13.md</span></td>
-          <td>10959 bytes</td>
-          <td>2026-05-13 10:05</td>
-        </tr>
-        <tr>
-          <td><strong>2026-05-16.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-05-16.md</span></td>
-          <td>2023 bytes</td>
-          <td>2026-05-16 21:59</td>
-        </tr>
-        <tr>
-          <td><strong>2026-05-17.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-05-17.md</span></td>
-          <td>6715 bytes</td>
-          <td>2026-05-17 18:57</td>
-        </tr>
-        <tr>
-          <td><strong>2026-05-20.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-05-20.md</span></td>
-          <td>3450 bytes</td>
-          <td>2026-05-21 00:02</td>
-        </tr>
-        <tr>
-          <td><strong>2026-05-21.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-05-21.md</span></td>
-          <td>269 bytes</td>
-          <td>2026-05-21 05:04</td>
-        </tr>
-        <tr>
-          <td><strong>2026-05-24.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-05-24.md</span></td>
-          <td>1248 bytes</td>
-          <td>2026-05-24 00:49</td>
-        </tr>
-        <tr>
-          <td><strong>2026-05-25.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-05-25.md</span></td>
-          <td>5092 bytes</td>
-          <td>2026-05-25 19:43</td>
-        </tr>
-        <tr>
-          <td><strong>2026-05-27.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-05-27.md</span></td>
-          <td>679 bytes</td>
-          <td>2026-05-27 16:47</td>
-        </tr>
-        <tr>
-          <td><strong>2026-05-30.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-05-30.md</span></td>
-          <td>11335 bytes</td>
-          <td>2026-06-13 21:53</td>
-        </tr>
-        <tr>
-          <td><strong>2026-05-31.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-05-31.md</span></td>
-          <td>3982 bytes</td>
-          <td>2026-05-31 20:55</td>
-        </tr>
-        <tr>
-          <td><strong>2026-06-01.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-06-01.md</span></td>
-          <td>268 bytes</td>
-          <td>2026-06-01 00:42</td>
-        </tr>
-        <tr>
-          <td><strong>2026-06-02.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-06-02.md</span></td>
-          <td>1618 bytes</td>
-          <td>2026-06-02 05:42</td>
-        </tr>
-        <tr>
-          <td><strong>2026-06-03.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-06-03.md</span></td>
-          <td>6368 bytes</td>
-          <td>2026-06-03 16:43</td>
-        </tr>
-        <tr>
-          <td><strong>2026-06-04.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-06-04.md</span></td>
-          <td>1740 bytes</td>
-          <td>2026-06-04 04:19</td>
-        </tr>
-        <tr>
-          <td><strong>2026-06-05.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-06-05.md</span></td>
-          <td>2543 bytes</td>
-          <td>2026-06-05 06:11</td>
-        </tr>
-        <tr>
-          <td><strong>2026-06-06.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-06-06.md</span></td>
-          <td>4440 bytes</td>
-          <td>2026-06-06 20:46</td>
-        </tr>
-        <tr>
-          <td><strong>2026-06-07.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-06-07.md</span></td>
-          <td>5205 bytes</td>
-          <td>2026-06-07 13:18</td>
-        </tr>
-        <tr>
-          <td><strong>2026-06-09.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-06-09.md</span></td>
-          <td>11849 bytes</td>
-          <td>2026-06-09 21:17</td>
-        </tr>
-        <tr>
-          <td><strong>2026-06-10.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-06-10.md</span></td>
-          <td>6680 bytes</td>
-          <td>2026-06-10 11:31</td>
-        </tr>
-        <tr>
-          <td><strong>2026-06-11.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-06-11.md</span></td>
-          <td>6244 bytes</td>
-          <td>2026-06-11 14:30</td>
-        </tr>
-        <tr>
-          <td><strong>2026-06-12.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-06-12.md</span></td>
-          <td>1537 bytes</td>
-          <td>2026-06-12 02:05</td>
-        </tr>
-        <tr>
-          <td><strong>2026-06-13.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-06-13.md</span></td>
-          <td>5395 bytes</td>
-          <td>2026-06-13 20:59</td>
-        </tr>
-        <tr>
-          <td><strong>2026-06-14.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-06-14.md</span></td>
-          <td>9316 bytes</td>
-          <td>2026-06-14 13:09</td>
-        </tr>
-        <tr>
-          <td><strong>2026-06-15.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-06-15.md</span></td>
-          <td>6902 bytes</td>
-          <td>2026-06-15 23:12</td>
-        </tr>
-        <tr>
-          <td><strong>2026-06-16-kadena-excel-sync.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-06-16-kadena-excel-sync.md</span></td>
-          <td>3376 bytes</td>
-          <td>2026-06-16 16:10</td>
-        </tr>
-        <tr>
-          <td><strong>2026-06-16.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-06-16.md</span></td>
-          <td>11236 bytes</td>
-          <td>2026-06-16 16:18</td>
-        </tr>
-        <tr>
-          <td><strong>2026-06-18.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-06-18.md</span></td>
-          <td>3725 bytes</td>
-          <td>2026-06-18 12:04</td>
-        </tr>
-        <tr>
-          <td><strong>2026-06-19.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-06-19.md</span></td>
-          <td>2541 bytes</td>
-          <td>2026-06-19 11:42</td>
-        </tr>
-        <tr>
-          <td><strong>2026-06-21.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/2026-06-21.md</span></td>
-          <td>1587 bytes</td>
-          <td>2026-06-21 14:47</td>
-        </tr>
-        <tr>
-          <td><strong>logistoria-site-audit-2026-04-16.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/logistoria-site-audit-2026-04-16.md</span></td>
-          <td>9212 bytes</td>
-          <td>2026-04-16 06:07</td>
-        </tr>
-        <tr>
-          <td><strong>safemind-site-status.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/safemind-site-status.md</span></td>
-          <td>5399 bytes</td>
-          <td>2026-05-11 21:18</td>
-        </tr>
-        <tr>
-          <td><strong>storewars-presentation-plan.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/storewars-presentation-plan.md</span></td>
-          <td>34290 bytes</td>
-          <td>2026-06-14 20:34</td>
-        </tr>
-        <tr>
-          <td><strong>storewars-state.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/memory/storewars-state.md</span></td>
-          <td>7218 bytes</td>
-          <td>2026-06-14 20:27</td>
-        </tr>
-        <tr>
-          <td><strong>MEMORY.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/MEMORY.md</span></td>
-          <td>2912 bytes</td>
-          <td>2026-06-11 13:38</td>
-        </tr>
-        <tr>
-          <td><strong>USER.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/USER.md</span></td>
-          <td>46113 bytes</td>
-          <td>2026-06-19 06:38</td>
-        </tr>
-        <tr>
-          <td><strong>SOUL.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/SOUL.md</span></td>
-          <td>5384 bytes</td>
-          <td>2026-04-04 03:31</td>
-        </tr>
-        <tr>
-          <td><strong>AGENTS.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/AGENTS.md</span></td>
-          <td>8168 bytes</td>
-          <td>2026-06-13 21:42</td>
-        </tr>
-        <tr>
-          <td><strong>TOOLS.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/TOOLS.md</span></td>
-          <td>10727 bytes</td>
-          <td>2026-06-13 23:43</td>
-        </tr>
-        <tr>
-          <td><strong>HEARTBEAT.md</strong></td>
-          <td><span class="path">/root/.openclaw/workspace/HEARTBEAT.md</span></td>
-          <td>8753 bytes</td>
-          <td>2026-06-10 11:35</td>
-        </tr>
-      </table>
-    </div>
-  </div>
-  <div class="section">
     <h2>🌐 Git статус</h2>
     <div class="table-wrap">
       <table>
@@ -946,157 +595,149 @@ tr:hover td { background: rgba(61,25,89,0.02); }
   </div>
   <div class="section">
     <h2>📂 Workspace — Структура файлов и папок</h2>
-    <div class="tree-container" style="background: var(--bg); border-radius: 8px; padding: 20px; margin-top: 12px;">
+    <div class="tree-container">
 <div class="tree-node root"><span class="tree-folder">📁 workspace</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 agents</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 assets</span><span class="tree-size">1 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 content_global</span><span class="tree-size">2 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 dashboard</span><span class="tree-size">4 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 digests</span><span class="tree-size">6 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 docs</span><span class="tree-size">1 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 downstream_digest</span><span class="tree-size">12 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 bot</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 pilot</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 prompts</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 reglament</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 drafts</span><span class="tree-size">3 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 email_templates</span><span class="tree-size">4 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 images</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 course</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 inbox</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 kadena-game</span><span class="tree-size">2 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 backend</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 docs</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 frontend</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 logistoria</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 course_modules</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 logistoria-website</span><span class="tree-size">6 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 logs</span><span class="tree-size">4 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 skill-scans</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 memorized_diary</span><span class="tree-size">13 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 memory</span><span class="tree-size">53 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 linkedin</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 logistoria</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 other</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 personal</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 presentations</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 projects</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 tech</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 work</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 memory_consolidation</span><span class="tree-size">3 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 prompts</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 state</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 orchestrator</span><span class="tree-size">1 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 tasks</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 personal</span><span class="tree-size">6 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 posts</span><span class="tree-size">8 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 projects</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 botgame</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 dungeonbot</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 super_dashboard</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 walkytalky</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 rusal-dashboard-new</span><span class="tree-size">4 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 safemind</span><span class="tree-size">17 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 assets</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 backend</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 backup</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 data</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 en</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 es</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 free_docx</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 free_guides</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 free_pdfs</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 guides</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 pdfs</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 research</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 ru</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 scripts</span><span class="tree-size">15 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 skills</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 agent-team-orchestration</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 api-gateway</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 asia-communication-guide</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 automation-workflows</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 china-communication-guide</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 clawrouter</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 client-outreach-scripts</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 college-outreach-russia</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 communication-guides-index</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 context-engineering</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 daily-briefing</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 data-analysis</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 decision-trees</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 digest</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 documentation-and-adrs</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 downstream-digest</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 email-objection-handler</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 excel-xlsx</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 failsafe-secureclaw</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 frontend-ui-engineering</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 github</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 gog</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 gr-monitor</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 help_news</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 idea-refine</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 ima-all-ai</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 imap-smtp-email</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 incremental-implementation</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 kimiim</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 latam-communication-guide</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 multi-search-engine</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 nano-pdf</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 networking-email-drafter</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 notion</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 obsidian</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 ontology-to-expertpack</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 openclaw-multi-search-engine</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 planning-and-task-breakdown</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 playwright</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 playwright-scraper</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 powerpoint-pptx</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 ppt-master</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 pptx-generator</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 price-comparison</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 proactive-agent</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 russia-cis-communication-guide</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 self-diagnostic-agent</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 self-improving</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 self-improving-agent</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 skad-help</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 skill-creator-chindden</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 skill-vetter</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 smeta</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 soulsaying</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 source-driven-development</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 spec-driven-development</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 summarize-1-0-0</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 task-decomposer</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 tavily-web-search-for-openclaw</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 time-awareness</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 ui-ux-pro-max</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 using-agent-skills</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 web-search</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 wiki-system</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 word-docx</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 worker-safety</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 ws-agent-browser</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 youtube-summarizer</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 social_setup</span><span class="tree-size">1 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 storewars</span><span class="tree-size">1 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 storewars-app</span><span class="tree-size">8 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 backend</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 frontend</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 storewars-facilitation</span><span class="tree-size">8 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 tilda_blocks</span><span class="tree-size">16 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 tilda_export</span><span class="tree-size">1 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 u7bmh7htqfbbq.ok.kimi.link</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 настольная_игра</span><span class="tree-size">1 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 assets</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 docs</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 prototypes</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 research</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:48px"><span class="tree-folder">📁 rules</span><span class="tree-size">0 files</span></div>
-<div class="tree-node" style="padding-left:24px"><span class="tree-folder">📁 рабочие_вопросы</span><span class="tree-size">0 files</span></div>
-
+<div class="tree-parent">
+<div class="tree-node tree-toggle" style="padding-left:24px" onclick="toggleTree(this)"><span class="tree-toggle-icon">&#8199;</span> <span class="tree-folder">&#128193; assets</span><span class="tree-size">1 files</span></div>
+</div>
+<div class="tree-parent">
+<div class="tree-node tree-toggle" style="padding-left:24px" onclick="toggleTree(this)"><span class="tree-toggle-icon">&#8199;</span> <span class="tree-folder">&#128193; content_global</span><span class="tree-size">2 files</span></div>
+</div>
+<div class="tree-parent">
+<div class="tree-node tree-toggle" style="padding-left:24px" onclick="toggleTree(this)"><span class="tree-toggle-icon">&#8199;</span> <span class="tree-folder">&#128193; dashboard</span><span class="tree-size">4 files</span></div>
+</div>
+<div class="tree-parent">
+<div class="tree-node tree-toggle" style="padding-left:24px" onclick="toggleTree(this)"><span class="tree-toggle-icon">&#8199;</span> <span class="tree-folder">&#128193; digests</span><span class="tree-size">6 files</span></div>
+</div>
+<div class="tree-parent">
+<div class="tree-node tree-toggle" style="padding-left:24px" onclick="toggleTree(this)"><span class="tree-toggle-icon">&#8199;</span> <span class="tree-folder">&#128193; docs</span><span class="tree-size">1 files</span></div>
+</div>
+<div class="tree-parent">
+<div class="tree-node tree-toggle" style="padding-left:24px" onclick="toggleTree(this)"><span class="tree-toggle-icon">&#9662;</span> <span class="tree-folder">&#128193; downstream_digest</span><span class="tree-size">12 files</span></div>
+<div class="tree-children">
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; bot</span><span class="tree-size">0 files</span></div>
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; pilot</span><span class="tree-size">0 files</span></div>
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; prompts</span><span class="tree-size">0 files</span></div>
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; reglament</span><span class="tree-size">0 files</span></div>
+</div>
+</div>
+<div class="tree-parent">
+<div class="tree-node tree-toggle" style="padding-left:24px" onclick="toggleTree(this)"><span class="tree-toggle-icon">&#8199;</span> <span class="tree-folder">&#128193; drafts</span><span class="tree-size">3 files</span></div>
+</div>
+<div class="tree-parent">
+<div class="tree-node tree-toggle" style="padding-left:24px" onclick="toggleTree(this)"><span class="tree-toggle-icon">&#8199;</span> <span class="tree-folder">&#128193; email_templates</span><span class="tree-size">4 files</span></div>
+</div>
+<div class="tree-parent">
+<div class="tree-node tree-toggle" style="padding-left:24px" onclick="toggleTree(this)"><span class="tree-toggle-icon">&#9662;</span> <span class="tree-folder">&#128193; kadena-game</span><span class="tree-size">2 files</span></div>
+<div class="tree-children">
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; backend</span><span class="tree-size">0 files</span></div>
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; docs</span><span class="tree-size">0 files</span></div>
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; frontend</span><span class="tree-size">0 files</span></div>
+</div>
+</div>
+<div class="tree-parent">
+<div class="tree-node tree-toggle" style="padding-left:24px" onclick="toggleTree(this)"><span class="tree-toggle-icon">&#8199;</span> <span class="tree-folder">&#128193; logistoria-website</span><span class="tree-size">6 files</span></div>
+</div>
+<div class="tree-parent">
+<div class="tree-node tree-toggle" style="padding-left:24px" onclick="toggleTree(this)"><span class="tree-toggle-icon">&#9662;</span> <span class="tree-folder">&#128193; logs</span><span class="tree-size">4 files</span></div>
+<div class="tree-children">
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; skill-scans</span><span class="tree-size">0 files</span></div>
+</div>
+</div>
+<div class="tree-parent">
+<div class="tree-node tree-toggle" style="padding-left:24px" onclick="toggleTree(this)"><span class="tree-toggle-icon">&#8199;</span> <span class="tree-folder">&#128193; memorized_diary</span><span class="tree-size">13 files</span></div>
+</div>
+<div class="tree-parent">
+<div class="tree-node tree-toggle" style="padding-left:24px" onclick="toggleTree(this)"><span class="tree-toggle-icon">&#9662;</span> <span class="tree-folder">&#128193; memory</span><span class="tree-size">53 files</span></div>
+<div class="tree-children">
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; linkedin</span><span class="tree-size">0 files</span></div>
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; logistoria</span><span class="tree-size">0 files</span></div>
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; other</span><span class="tree-size">0 files</span></div>
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; personal</span><span class="tree-size">0 files</span></div>
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; presentations</span><span class="tree-size">0 files</span></div>
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; projects</span><span class="tree-size">0 files</span></div>
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; tech</span><span class="tree-size">0 files</span></div>
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; work</span><span class="tree-size">0 files</span></div>
+</div>
+</div>
+<div class="tree-parent">
+<div class="tree-node tree-toggle" style="padding-left:24px" onclick="toggleTree(this)"><span class="tree-toggle-icon">&#9662;</span> <span class="tree-folder">&#128193; memory_consolidation</span><span class="tree-size">3 files</span></div>
+<div class="tree-children">
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; prompts</span><span class="tree-size">0 files</span></div>
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; state</span><span class="tree-size">0 files</span></div>
+</div>
+</div>
+<div class="tree-parent">
+<div class="tree-node tree-toggle" style="padding-left:24px" onclick="toggleTree(this)"><span class="tree-toggle-icon">&#9662;</span> <span class="tree-folder">&#128193; orchestrator</span><span class="tree-size">1 files</span></div>
+<div class="tree-children">
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; tasks</span><span class="tree-size">0 files</span></div>
+</div>
+</div>
+<div class="tree-parent">
+<div class="tree-node tree-toggle" style="padding-left:24px" onclick="toggleTree(this)"><span class="tree-toggle-icon">&#8199;</span> <span class="tree-folder">&#128193; personal</span><span class="tree-size">6 files</span></div>
+</div>
+<div class="tree-parent">
+<div class="tree-node tree-toggle" style="padding-left:24px" onclick="toggleTree(this)"><span class="tree-toggle-icon">&#8199;</span> <span class="tree-folder">&#128193; posts</span><span class="tree-size">8 files</span></div>
+</div>
+<div class="tree-parent">
+<div class="tree-node tree-toggle" style="padding-left:24px" onclick="toggleTree(this)"><span class="tree-toggle-icon">&#8199;</span> <span class="tree-folder">&#128193; rusal-dashboard-new</span><span class="tree-size">4 files</span></div>
+</div>
+<div class="tree-parent">
+<div class="tree-node tree-toggle" style="padding-left:24px" onclick="toggleTree(this)"><span class="tree-toggle-icon">&#9662;</span> <span class="tree-folder">&#128193; safemind</span><span class="tree-size">17 files</span></div>
+<div class="tree-children">
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; assets</span><span class="tree-size">0 files</span></div>
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; backend</span><span class="tree-size">0 files</span></div>
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; backup</span><span class="tree-size">0 files</span></div>
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; data</span><span class="tree-size">0 files</span></div>
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; en</span><span class="tree-size">0 files</span></div>
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; es</span><span class="tree-size">0 files</span></div>
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; free_docx</span><span class="tree-size">0 files</span></div>
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; free_guides</span><span class="tree-size">0 files</span></div>
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; free_pdfs</span><span class="tree-size">0 files</span></div>
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; guides</span><span class="tree-size">0 files</span></div>
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; pdfs</span><span class="tree-size">0 files</span></div>
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; research</span><span class="tree-size">0 files</span></div>
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; ru</span><span class="tree-size">0 files</span></div>
+</div>
+</div>
+<div class="tree-parent">
+<div class="tree-node tree-toggle" style="padding-left:24px" onclick="toggleTree(this)"><span class="tree-toggle-icon">&#8199;</span> <span class="tree-folder">&#128193; scripts</span><span class="tree-size">15 files</span></div>
+</div>
+<div class="tree-parent">
+<div class="tree-node tree-toggle" style="padding-left:24px" onclick="toggleTree(this)"><span class="tree-toggle-icon">&#8199;</span> <span class="tree-folder">&#128193; social_setup</span><span class="tree-size">1 files</span></div>
+</div>
+<div class="tree-parent">
+<div class="tree-node tree-toggle" style="padding-left:24px" onclick="toggleTree(this)"><span class="tree-toggle-icon">&#8199;</span> <span class="tree-folder">&#128193; storewars</span><span class="tree-size">1 files</span></div>
+</div>
+<div class="tree-parent">
+<div class="tree-node tree-toggle" style="padding-left:24px" onclick="toggleTree(this)"><span class="tree-toggle-icon">&#9662;</span> <span class="tree-folder">&#128193; storewars-app</span><span class="tree-size">8 files</span></div>
+<div class="tree-children">
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; backend</span><span class="tree-size">0 files</span></div>
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; frontend</span><span class="tree-size">0 files</span></div>
+</div>
+</div>
+<div class="tree-parent">
+<div class="tree-node tree-toggle" style="padding-left:24px" onclick="toggleTree(this)"><span class="tree-toggle-icon">&#8199;</span> <span class="tree-folder">&#128193; storewars-facilitation</span><span class="tree-size">8 files</span></div>
+</div>
+<div class="tree-parent">
+<div class="tree-node tree-toggle" style="padding-left:24px" onclick="toggleTree(this)"><span class="tree-toggle-icon">&#8199;</span> <span class="tree-folder">&#128193; tilda_blocks</span><span class="tree-size">16 files</span></div>
+</div>
+<div class="tree-parent">
+<div class="tree-node tree-toggle" style="padding-left:24px" onclick="toggleTree(this)"><span class="tree-toggle-icon">&#9662;</span> <span class="tree-folder">&#128193; tilda_export</span><span class="tree-size">1 files</span></div>
+<div class="tree-children">
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; u7bmh7htqfbbq.ok.kimi.link</span><span class="tree-size">0 files</span></div>
+</div>
+</div>
+<div class="tree-parent">
+<div class="tree-node tree-toggle" style="padding-left:24px" onclick="toggleTree(this)"><span class="tree-toggle-icon">&#9662;</span> <span class="tree-folder">&#128193; настольная_игра</span><span class="tree-size">1 files</span></div>
+<div class="tree-children">
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; assets</span><span class="tree-size">0 files</span></div>
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; docs</span><span class="tree-size">0 files</span></div>
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; prototypes</span><span class="tree-size">0 files</span></div>
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; research</span><span class="tree-size">0 files</span></div>
+<div class="tree-node" style="padding-left:48px"><span class="tree-folder">&#128193; rules</span><span class="tree-size">0 files</span></div>
+</div>
+</div>
     </div>
   </div>
   <div class="section">
@@ -1132,5 +773,13 @@ tr:hover td { background: rgba(61,25,89,0.02); }
     <p><a href="https://github.com/kimicito/logistoria-website">GitHub</a></p>
   </footer>
 </div>
+<script>
+function toggleTree(el) {
+  const parent = el.closest('.tree-parent');
+  if (parent) {
+    parent.classList.toggle('collapsed');
+  }
+}
+</script>
 </body>
 </html>
