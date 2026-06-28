@@ -61,7 +61,7 @@ footer a { color: var(--orange); text-decoration: none; }
   <header>
     <h1>🐾 Kimicito Status Dashboard</h1>
     <p class="subtitle">Полный расклад по проектам, skills, памяти и интеграциям</p>
-    <p class="timestamp">Последнее обновление: 2026-06-28 14:41 UTC</p>
+    <p class="timestamp">Последнее обновление: 2026-06-28 22:17 UTC</p>
   </header>
 
   <div class="stats-grid">
@@ -74,20 +74,35 @@ footer a { color: var(--orange); text-decoration: none; }
       <div class="value">5</div>
     </div>
     <div class="stat-card">
-      <h3>Глобальных skills</h3>
-      <div class="value">23</div>
+      <h3>Wiki pages</h3>
+      <div class="value">8</div>
+    </div>
+    <div class="stat-card success">
+      <h3>Git коммитов</h3>
+      <div class="value">30+</div>
     </div>
     <div class="stat-card warning">
       <h3>Диск занят</h3>
       <div class="value">60%</div>
     </div>
-    <div class="stat-card success">
-      <h3>Git коммитов</h3>
-      <div class="value">25+</div>
-    </div>
     <div class="stat-card danger">
       <h3>Смета</h3>
       <div class="value" style="font-size:20px">42× ошибка</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📚 Wiki (Obsidian)</h2>
+    <p style="margin-bottom:16px;color:var(--text-secondary);font-size:14px;">LLM-управляемая база знаний. Не RAG — persistent, compounding artifact.</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Page</th><th>Type</th><th>Tags</th><th>Ссылка</th></tr>
+        <tr><td><span class="path">CLAUDE.md</span></td><td>Schema</td><td><span class="badge badge-info">meta</span></td><td><a href="https://github.com/kimicito/openclaw-workspace/blob/master/wiki/.obsidian/CLAUDE.md">View</a></td></tr>
+        <tr><td><span class="path">index</span></td><td>Index</td><td><span class="badge badge-info">meta</span></td><td><a href="https://github.com/kimicito/openclaw-workspace/blob/master/wiki/index.md">View</a></td></tr>
+        <tr><td><span class="path">WEF AI Playbook 2026</span></td><td>Source</td><td><span class="badge badge-info">report</span> <span class="badge badge-info">wef</span></td><td><a href="https://github.com/kimicito/openclaw-workspace/blob/master/wiki/03-Resources/WEF%20AI%20Playbook%202026.md">View</a></td></tr>
+        <tr><td><span class="path">Agentic AI</span></td><td>Entity</td><td><span class="badge badge-info">concept</span></td><td><a href="https://github.com/kimicito/openclaw-workspace/blob/master/wiki/03-Resources/Agentic%20AI.md">View</a></td></tr>
+        <tr><td><span class="path">KBTG</span></td><td>Entity</td><td><span class="badge badge-info">case-study</span></td><td><a href="https://github.com/kimicito/openclaw-workspace/blob/master/wiki/03-Resources/KBTG.md">View</a></td></tr>
+      </table>
     </div>
   </div>
 
@@ -149,8 +164,14 @@ footer a { color: var(--orange); text-decoration: none; }
         </tr>
         <tr>
           <td><span class="path">work/</span></td>
-          <td><strong>~3 KB</strong></td>
-          <td>Рабочие задачи: задачи_шефа.md</td>
+          <td><strong>~15 KB</strong></td>
+          <td>Рабочие задачи: задачи_шефа.md, AI Playbook саммари, презентации</td>
+          <td><span class="badge badge-success">git</span></td>
+        </tr>
+        <tr>
+          <td><span class="path">wiki/</span></td>
+          <td><strong>~12 KB</strong></td>
+          <td>Obsidian vault: база знаний (8 pages, schema, index, log)</td>
           <td><span class="badge badge-success">git</span></td>
         </tr>
         <tr>
@@ -210,38 +231,12 @@ footer a { color: var(--orange); text-decoration: none; }
           <td>Интеграция с Notion</td>
           <td><span class="badge badge-info">standby</span></td>
         </tr>
-      </table>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>📦 Глобальные skills (23)</h2>
-    <p style="margin-bottom:16px;color:var(--text-secondary);font-size:14px;">Установлены в ~/.openclaw/skills/ — общие для всех workspace</p>
-    <div class="table-wrap">
-      <table>
-        <tr><th>Skill</th><th>Категория</th></tr>
-        <tr><td>ad-creative</td><td>Маркетинг</td></tr>
-        <tr><td>campaign-plan</td><td>Маркетинг</td></tr>
-        <tr><td>channels-setup</td><td>Инфраструктура</td></tr>
-        <tr><td>churn-prevention</td><td>Аналитика</td></tr>
-        <tr><td>content-research-writer</td><td>Контент</td></tr>
-        <tr><td>context-router</td><td>Роутинг</td></tr>
-        <tr><td>copy-editing</td><td>Контент</td></tr>
-        <tr><td>copywriting</td><td>Контент</td></tr>
-        <tr><td>daily-report</td><td>Отчётность</td></tr>
-        <tr><td>humanizer</td><td>AI</td></tr>
-        <tr><td>legal-risk-assessment</td><td>Юридический</td></tr>
-        <tr><td>md-to-pdf</td><td>Форматы</td></tr>
-        <tr><td>openclaw-slides</td><td>Презентации</td></tr>
-        <tr><td>pptx-generator</td><td>Презентации</td></tr>
-        <tr><td>pricing-strategy</td><td>Бизнес</td></tr>
-        <tr><td>process-doc</td><td>Документация</td></tr>
-        <tr><td>saas-metrics-coach</td><td>Аналитика</td></tr>
-        <tr><td>seo-audit</td><td>Маркетинг</td></tr>
-        <tr><td>stt-vosk / vosk</td><td>Распознавание речи</td></tr>
-        <tr><td>theme-factory</td><td>Дизайн</td></tr>
-        <tr><td>wow-presentations</td><td>Презентации</td></tr>
-        <tr><td><span style="text-decoration:line-through;color:#999">smeta.skill.old</span></td><td>Архив (устарел)</td></tr>
+        <tr>
+          <td><span class="path">obsidian</span></td>
+          <td>—</td>
+          <td>Работа с Obsidian vaults (wiki, базы знаний)</td>
+          <td><span class="badge badge-success">active</span></td>
+        </tr>
       </table>
     </div>
   </div>
@@ -249,16 +244,16 @@ footer a { color: var(--orange); text-decoration: none; }
   <div class="section">
     <h2>📝 Последние коммиты (openclaw-workspace)</h2>
     <ul class="commit-list">
+      <li><span class="hash">1854359</span><span class="msg">[wiki] Schema CLAUDE.md + entity pages + index + log</span><span class="date">2026-06-28</span></li>
+      <li><span class="hash">89b95ba</span><span class="msg">[setup] Obsidian wiki vault — structure + obsidian-cli + sample note</span><span class="date">2026-06-28</span></li>
+      <li><span class="hash">252961c</span><span class="msg">[presentation] WEF AI Playbook — 7 слайдов, деловой стиль, PPTX + MD</span><span class="date">2026-06-28</span></li>
+      <li><span class="hash">f31228d</span><span class="msg">[research] WEF AI Playbook — official WEF+Accenture report, June 2026</span><span class="date">2026-06-28</span></li>
+      <li><span class="hash">6360065</span><span class="msg">[research] AI Playbook for Financial Services — саммари для топ-менеджмента</span><span class="date">2026-06-28</span></li>
+      <li><span class="hash">7d7559d</span><span class="msg">[fix] backup rules: .gitignore updated, backup.sh + TOOLS.md</span><span class="date">2026-06-28</span></li>
       <li><span class="hash">d6d06e1</span><span class="msg">[doc] README.md — структура workspace: personal/, work/, projects/, skills/</span><span class="date">2026-06-28</span></li>
       <li><span class="hash">920475f</span><span class="msg">[fix] задачи_шефа.md — только в work/, убран дубль из корня</span><span class="date">2026-06-28</span></li>
       <li><span class="hash">83712f3</span><span class="msg">[fix] work/ + задачи_шефа.md — добавлены в Git для бэкапа</span><span class="date">2026-06-28</span></li>
       <li><span class="hash">2ad9a3f</span><span class="msg">[fix] Восстановлен personal/ из git history; удалён logistoria-tmp</span><span class="date">2026-06-28</span></li>
-      <li><span class="hash">1c16cb6</span><span class="msg">[fix] TOOLS.md — skill priority rules, archive old smeta.skill</span><span class="date">2026-06-28</span></li>
-      <li><span class="hash">bd8b69f</span><span class="msg">[doc] Шаблон ЛСР БИМ + ФЕР-20 PDF — изучение методики</span><span class="date">2026-06-28</span></li>
-      <li><span class="hash">6f0b975</span><span class="msg">[doc] Сравнение моей сметы vs профи — БИМ-методика, 42x ошибка</span><span class="date">2026-06-28</span></li>
-      <li><span class="hash">8aa8b58</span><span class="msg">[fix] eval_smeta.py — исправлен парсинг ВОР</span><span class="date">2026-06-28</span></li>
-      <li><span class="hash">2e04d53</span><span class="msg">[fix] eval_smeta.py + ПРАВИЛО_ВОР.md + ОШИБКИ_АНАЛИЗ.md</span><span class="date">2026-06-28</span></li>
-      <li><span class="hash">4500c96</span><span class="msg">[fix] Смета вентиляция Иркутск — строго по ВОР, без фантазии</span><span class="date">2026-06-28</span></li>
     </ul>
   </div>
 
@@ -268,6 +263,7 @@ footer a { color: var(--orange); text-decoration: none; }
       <table>
         <tr><th>Ресурс</th><th>Ссылка</th></tr>
         <tr><td>Workspace GitHub</td><td><a href="https://github.com/kimicito/openclaw-workspace">github.com/kimicito/openclaw-workspace</a></td></tr>
+        <tr><td>Wiki (Obsidian)</td><td><a href="https://github.com/kimicito/openclaw-workspace/tree/master/wiki">github.com/kimicito/openclaw-workspace/wiki</a></td></tr>
         <tr><td>Logistoria Website</td><td><a href="https://github.com/kimicito/logistoria-website">github.com/kimicito/logistoria-website</a></td></tr>
         <tr><td>Этот дашборд</td><td><a href="https://kimicito.github.io/">kimicito.github.io</a></td></tr>
         <tr><td>GitHub Profile</td><td><a href="https://github.com/kimicito">github.com/kimicito</a></td></tr>
