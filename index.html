@@ -15,6 +15,7 @@
   --border: #e8e8f0;
   --success: #22c55e;
   --warning: #f59e0b;
+  --danger: #ef4444;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
@@ -27,6 +28,7 @@ header .timestamp { color: var(--orange); font-weight: 600; margin-top: 4px; }
 .stat-card { background: var(--card); border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-left: 4px solid var(--violet); }
 .stat-card.warning { border-left-color: var(--warning); }
 .stat-card.success { border-left-color: var(--success); }
+.stat-card.danger { border-left-color: var(--danger); }
 .stat-card h3 { font-size: 14px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
 .stat-card .value { font-size: 32px; font-weight: 800; color: var(--violet); }
 .section { background: var(--card); border-radius: 12px; padding: 32px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
@@ -40,363 +42,203 @@ tr:hover td { background: rgba(61,25,89,0.02); }
 .badge-success { background: #dcfce7; color: #166534; }
 .badge-warning { background: #fef3c7; color: #92400e; }
 .badge-info { background: #dbeafe; color: #1e40af; }
+.badge-danger { background: #fee2e2; color: #991b1b; }
 .path { font-family: 'SF Mono', Monaco, monospace; font-size: 12px; color: var(--text-secondary); background: var(--bg); padding: 2px 6px; border-radius: 4px; }
-.arch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-.arch-card { background: var(--bg); border-radius: 8px; padding: 20px; }
-.arch-card h3 { font-size: 16px; color: var(--violet); margin-bottom: 12px; }
-.arch-card ul { list-style: none; }
-.arch-card li { padding: 6px 0; font-size: 14px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px; }
-.arch-card li span:first-child { color: var(--text-secondary); }
+.commit-list { list-style: none; }
+.commit-list li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; display: flex; gap: 12px; align-items: center; }
+.commit-list .hash { font-family: monospace; color: var(--orange); font-weight: 600; }
+.commit-list .msg { flex: 1; }
+.commit-list .date { color: var(--text-secondary); font-size: 12px; }
 footer { text-align: center; padding: 40px 0; color: var(--text-secondary); font-size: 14px; }
 footer a { color: var(--orange); text-decoration: none; }
 @media (max-width: 768px) {
   .stats-grid { grid-template-columns: 1fr; }
-  .arch-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
 <div class="container">
   <header>
-    <h1>Kimicito Status Dashboard</h1>
+    <h1>🐾 Kimicito Status Dashboard</h1>
     <p class="subtitle">Полный расклад по проектам, skills, памяти и интеграциям</p>
-    <p class="timestamp">Последнее обновление: 2026-06-23 05:45 UTC</p>
+    <p class="timestamp">Последнее обновление: 2026-06-28 04:53 UTC</p>
   </header>
 
   <div class="stats-grid">
     <div class="stat-card">
       <h3>Проекты</h3>
-      <div class="value">11</div>
+      <div class="value">6</div>
     </div>
     <div class="stat-card success">
       <h3>Активных skills</h3>
-      <div class="value">62</div>
+      <div class="value">5</div>
     </div>
     <div class="stat-card">
-      <h3>Файлов памяти</h3>
-      <div class="value">52</div>
+      <h3>Глобальных skills</h3>
+      <div class="value">23</div>
     </div>
     <div class="stat-card warning">
       <h3>Диск занят</h3>
-      <div class="value">62%</div>
+      <div class="value">60%</div>
     </div>
     <div class="stat-card success">
-      <h3>Мониторинг</h3>
-      <div class="value" style="font-size:20px;">&lt;3GB = alert</div>
+      <h3>Git коммитов</h3>
+      <div class="value">25+</div>
+    </div>
+    <div class="stat-card danger">
+      <h3>Смета</h3>
+      <div class="value" style="font-size:20px">42× ошибка</div>
     </div>
   </div>
 
   <div class="section">
-    <h2>💾 Хранилище (что занимает место)</h2>
+    <h2>🚀 Проекты</h2>
     <div class="table-wrap">
       <table>
-        <tr><th>Путь</th><th>Размер</th><th>Что внутри</th><th>Статус</th></tr>
+        <tr><th>Проект</th><th>Статус</th><th>Описание</th><th>Последнее обновление</th></tr>
         <tr>
-          <td><span class="path">kadena-game</span></td>
-          <td><strong>387 MB</strong></td>
-          <td>Фронтенд + бэкенд игры Кадена</td>
-          <td><span class="badge badge-success">active</span></td>
+          <td><strong>price-comparison</strong></td>
+          <td><span class="badge badge-success">v3.0 active</span></td>
+          <td>Сравнение цен: оригинал vs аналог. Матрицы, eval, субагенты</td>
+          <td>2026-06-27</td>
         </tr>
         <tr>
-          <td><span class="path">projects/</span></td>
-          <td><strong>369 MB</strong></td>
-          <td>botgame (259M) + dungeonbot (64M) + super_dashboard (47M)</td>
-          <td><span class="badge badge-warning">draft</span></td>
+          <td><strong>smeta</strong></td>
+          <td><span class="badge badge-warning">learning</span></td>
+          <td>Составление смет по ФЕР-2020. Изучаю БИМ-методику</td>
+          <td>2026-06-28</td>
         </tr>
         <tr>
-          <td><span class="path">/tmp/openclaw-backup-*.tar.gz</span></td>
-          <td><strong>349 MB</strong></td>
-          <td>Ежедневный бэкап workspace (2026-06-23)</td>
-          <td><span class="badge badge-info">архив</span></td>
+          <td><strong>botgame / dungeonbot</strong></td>
+          <td><span class="badge badge-info">standby</span></td>
+          <td>Игровые боты (разработка/тестирование)</td>
+          <td>—</td>
         </tr>
         <tr>
-          <td><span class="path">venv/</span></td>
-          <td><strong>316 MB</strong></td>
-          <td>Python virtual environment</td>
-          <td><span class="badge badge-success">active</span></td>
-        </tr>
-        <tr>
-          <td><span class="path">storewars-app</span></td>
-          <td><strong>257 MB</strong></td>
-          <td>Бизнес-симуляция Storewars</td>
-          <td><span class="badge badge-success">active</span></td>
-        </tr>
-        <tr>
-          <td><span class="path">models/</span></td>
-          <td><strong>199 MB</strong></td>
-          <td>Vosk STT модели (ru + en)</td>
-          <td><span class="badge badge-success">active</span></td>
-        </tr>
-        <tr>
-          <td><span class="path">safemind</span></td>
-          <td><strong>111 MB</strong></td>
-          <td>Landing SafeMind</td>
-          <td><span class="badge badge-success">active</span></td>
-        </tr>
-        <tr>
-          <td><span class="path">memory/</span></td>
-          <td><strong>87 MB</strong></td>
-          <td>52 файла ежедневных заметок</td>
-          <td><span class="badge badge-success">active</span></td>
-        </tr>
-        <tr>
-          <td><span class="path">logistoria-tmp</span></td>
-          <td><strong>53 MB</strong></td>
-          <td>Временные файлы Logistoria</td>
-          <td><span class="badge badge-info">temp</span></td>
-        </tr>
-      </table>
-    </div>
-    <p style="margin-top:12px; font-size:13px; color:var(--text-secondary);">
-      Всего диск: <strong>40 GB</strong> | Занято: <strong>23 GB (62%)</strong> | Свободно: <strong>15 GB</strong>
-    </p>
-  </div>
-
-  <div class="section">
-    <h2>📁 Проекты</h2>
-    <div class="table-wrap">
-      <table>
-        <tr><th>Проект</th><th>Путь</th><th>Статус</th><th>Последнее изменение</th></tr>
-        <tr>
-          <td><strong>logistoria-redesign</strong></td>
-          <td><span class="path">~/.openclaw/workspace/logistoria-redesign</span></td>
-          <td><span class="badge badge-success">active</span></td>
-          <td>В работе — редизайн сайта</td>
-        </tr>
-        <tr>
-          <td><strong>safemind</strong></td>
-          <td><span class="path">~/.openclaw/workspace/safemind</span></td>
-          <td><span class="badge badge-success">active</span></td>
-          <td>Психологическая поддержка + AI коучинг</td>
-        </tr>
-        <tr>
-          <td><strong>storewars-app</strong></td>
-          <td><span class="path">~/.openclaw/workspace/storewars-app</span></td>
-          <td><span class="badge badge-success">active</span></td>
-          <td>Business simulation platform</td>
-        </tr>
-        <tr>
-          <td><strong>kadena-game</strong></td>
-          <td><span class="path">~/.openclaw/workspace/kadena-game</span></td>
-          <td><span class="badge badge-success">active</span></td>
-          <td>Игра в логистику</td>
-        </tr>
-        <tr>
-          <td><strong>downstream_digest</strong></td>
-          <td><span class="path">~/.openclaw/workspace/downstream_digest</span></td>
-          <td><span class="badge badge-info">pilot</span></td>
-          <td>Дайджестная система</td>
-        </tr>
-        <tr>
-          <td><strong>orchestrator</strong></td>
-          <td><span class="path">~/.openclaw/workspace/orchestrator</span></td>
-          <td><span class="badge badge-info">pilot</span></td>
-          <td>Оркестратор задач</td>
-        </tr>
-        <tr>
-          <td><strong>botgame</strong></td>
-          <td><span class="path">~/.openclaw/workspace/projects/botgame</span></td>
-          <td><span class="badge badge-warning">draft</span></td>
-          <td>Бот-игра</td>
-        </tr>
-        <tr>
-          <td><strong>dungeonbot</strong></td>
-          <td><span class="path">~/.openclaw/workspace/projects/dungeonbot</span></td>
-          <td><span class="badge badge-warning">draft</span></td>
-          <td>Dungeon бот</td>
+          <td><strong>educai8</strong></td>
+          <td><span class="badge badge-info">standby</span></td>
+          <td>Образовательный проект</td>
+          <td>—</td>
         </tr>
         <tr>
           <td><strong>super_dashboard</strong></td>
-          <td><span class="path">~/.openclaw/workspace/projects/super_dashboard</span></td>
-          <td><span class="badge badge-warning">draft</span></td>
-          <td>Супер-дашборд</td>
+          <td><span class="badge badge-info">init</span></td>
+          <td>Этот дашборд</td>
+          <td>—</td>
         </tr>
         <tr>
           <td><strong>walkytalky</strong></td>
-          <td><span class="path">~/.openclaw/workspace/projects/walkytalky</span></td>
-          <td><span class="badge badge-warning">draft</span></td>
-          <td>Walky-talky проект</td>
-        </tr>
-        <tr>
-          <td><strong>настольная_игра</strong></td>
-          <td><span class="path">~/.openclaw/workspace/настольная_игра</span></td>
-          <td><span class="badge badge-warning">draft</span></td>
-          <td>Настольная игра</td>
+          <td><span class="badge badge-info">standby</span></td>
+          <td>Коммуникационный проект</td>
+          <td>—</td>
         </tr>
       </table>
     </div>
   </div>
 
   <div class="section">
-    <h2>🛠️ Skills (62 total)</h2>
+    <h2>🛠️ Skills (workspace — активные)</h2>
     <div class="table-wrap">
       <table>
-        <tr><th>Skill</th><th>Путь</th><th>Статус</th><th>Документация</th></tr>
-        <tr><td><strong>agent-team-orchestration</strong></td><td><span class="path">skills/agent-team-orchestration</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>api-gateway</strong></td><td><span class="path">skills/api-gateway</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>asia-communication-guide</strong></td><td><span class="path">skills/asia-communication-guide</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>automation-workflows</strong></td><td><span class="path">skills/automation-workflows</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>china-communication-guide</strong></td><td><span class="path">skills/china-communication-guide</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>clawrouter</strong></td><td><span class="path">skills/clawrouter</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>client-outreach-scripts</strong></td><td><span class="path">skills/client-outreach-scripts</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>college-outreach-russia</strong></td><td><span class="path">skills/college-outreach-russia</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>communication-guides-index</strong></td><td><span class="path">skills/communication-guides-index</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>context-engineering</strong></td><td><span class="path">skills/context-engineering</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>daily-briefing</strong></td><td><span class="path">skills/daily-briefing</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>data-analysis</strong></td><td><span class="path">skills/data-analysis</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>decision-trees</strong></td><td><span class="path">skills/decision-trees</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>digest</strong></td><td><span class="path">skills/digest</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>documentation-and-adrs</strong></td><td><span class="path">skills/documentation-and-adrs</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>downstream-digest</strong></td><td><span class="path">skills/downstream-digest</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>email-objection-handler</strong></td><td><span class="path">skills/email-objection-handler</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>excel-xlsx</strong></td><td><span class="path">skills/excel-xlsx</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>failsafe-secureclaw</strong></td><td><span class="path">skills/failsafe-secureclaw</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>frontend-ui-engineering</strong></td><td><span class="path">skills/frontend-ui-engineering</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>gog</strong></td><td><span class="path">skills/gog</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>gr-monitor</strong></td><td><span class="path">skills/gr-monitor</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>help_news</strong></td><td><span class="path">skills/help_news</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>idea-refine</strong></td><td><span class="path">skills/idea-refine</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>ima-all-ai</strong></td><td><span class="path">skills/ima-all-ai</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>imap-smtp-email</strong></td><td><span class="path">skills/imap-smtp-email</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>incremental-implementation</strong></td><td><span class="path">skills/incremental-implementation</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>kimiim</strong></td><td><span class="path">skills/kimiim</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>latam-communication-guide</strong></td><td><span class="path">skills/latam-communication-guide</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>nano-pdf</strong></td><td><span class="path">skills/nano-pdf</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>networking-email-drafter</strong></td><td><span class="path">skills/networking-email-drafter</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>notion</strong></td><td><span class="path">skills/notion</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>obsidian</strong></td><td><span class="path">skills/obsidian</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>ontology-to-expertpack</strong></td><td><span class="path">skills/ontology-to-expertpack</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>planning-and-task-breakdown</strong></td><td><span class="path">skills/planning-and-task-breakdown</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>playwright</strong></td><td><span class="path">skills/playwright</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>powerpoint-pptx</strong></td><td><span class="path">skills/powerpoint-pptx</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>pptx-generator</strong></td><td><span class="path">skills/pptx-generator</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>price-comparison</strong></td><td><span class="path">skills/price-comparison</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>proactive-agent</strong></td><td><span class="path">skills/proactive-agent</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>russia-cis-communication-guide</strong></td><td><span class="path">skills/russia-cis-communication-guide</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>self-diagnostic-agent</strong></td><td><span class="path">skills/self-diagnostic-agent</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>self-improving</strong></td><td><span class="path">skills/self-improving</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>skad-help</strong></td><td><span class="path">skills/skad-help</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>skill-creator-chindden</strong></td><td><span class="path">skills/skill-creator-chindden</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>skill-vetter</strong></td><td><span class="path">skills/skill-vetter</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>smeta</strong></td><td><span class="path">skills/smeta</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>soulsaying</strong></td><td><span class="path">skills/soulsaying</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>source-driven-development</strong></td><td><span class="path">skills/source-driven-development</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>spec-driven-development</strong></td><td><span class="path">skills/spec-driven-development</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>task-decomposer</strong></td><td><span class="path">skills/task-decomposer</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>time-awareness</strong></td><td><span class="path">skills/time-awareness</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>ui-ux-pro-max</strong></td><td><span class="path">skills/ui-ux-pro-max</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>using-agent-skills</strong></td><td><span class="path">skills/using-agent-skills</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>wiki-system</strong></td><td><span class="path">skills/wiki-system</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>word-docx</strong></td><td><span class="path">skills/word-docx</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>worker-safety</strong></td><td><span class="path">skills/worker-safety</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>ws-agent-browser</strong></td><td><span class="path">skills/ws-agent-browser</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
-        <tr><td><strong>youtube-summarizer</strong></td><td><span class="path">skills/youtube-summarizer</span></td><td><span class="badge badge-success">active</span></td><td><span class="badge badge-success">SKILL.md</span></td></tr>
+        <tr><th>Skill</th><th>Версия</th><th>Описание</th><th>Статус</th></tr>
+        <tr>
+          <td><span class="path">price-comparison</span></td>
+          <td>v3.0</td>
+          <td>Сравнение цен: оригинал vs аналог другого бренда. Excel с матрицами, eval, субагент tech-spec-researcher</td>
+          <td><span class="badge badge-success">active</span></td>
+        </tr>
+        <tr>
+          <td><span class="path">smeta</span></td>
+          <td>v1.0</td>
+          <td>Составление смет по ФЕР-2020/ГЭСН. eval_smeta.py для проверки против ВОР</td>
+          <td><span class="badge badge-warning">learning BИМ</span></td>
+        </tr>
+        <tr>
+          <td><span class="path">soulsaying</span></td>
+          <td>—</td>
+          <td>Разговорный/терапевтический режим</td>
+          <td><span class="badge badge-info">standby</span></td>
+        </tr>
+        <tr>
+          <td><span class="path">email-objection-handler</span></td>
+          <td>—</td>
+          <td>Обработка возражений по email</td>
+          <td><span class="badge badge-info">standby</span></td>
+        </tr>
+        <tr>
+          <td><span class="path">notion</span></td>
+          <td>—</td>
+          <td>Интеграция с Notion</td>
+          <td><span class="badge badge-info">standby</span></td>
+        </tr>
       </table>
     </div>
   </div>
 
   <div class="section">
-    <h2>🧠 Память и конфиги</h2>
+    <h2>📦 Глобальные skills (23)</h2>
+    <p style="margin-bottom:16px;color:var(--text-secondary);font-size:14px;">Установлены в ~/.openclaw/skills/ — общие для всех workspace</p>
     <div class="table-wrap">
       <table>
-        <tr><th>Файл</th><th>Путь</th><th>Назначение</th></tr>
-        <tr><td><strong>MEMORY.md</strong></td><td><span class="path">workspace/MEMORY.md</span></td><td>Долгосрочная память (проекты, решения)</td></tr>
-        <tr><td><strong>USER.md</strong></td><td><span class="path">workspace/USER.md</span></td><td>Профиль пользователя, предпочтения</td></tr>
-        <tr><td><strong>SOUL.md</strong></td><td><span class="path">workspace/SOUL.md</span></td><td>Персона, стиль общения, личность</td></tr>
-        <tr><td><strong>AGENTS.md</strong></td><td><span class="path">workspace/AGENTS.md</span></td><td>Правила workspace, red lines</td></tr>
-        <tr><td><strong>TOOLS.md</strong></td><td><span class="path">workspace/TOOLS.md</span></td><td>Локальные настройки инструментов</td></tr>
-        <tr><td><strong>HEARTBEAT.md</strong></td><td><span class="path">workspace/HEARTBEAT.md</span></td><td>Расписание задач, чеклисты</td></tr>
-        <tr><td><strong>memory/*.md</strong></td><td><span class="path">workspace/memory/</span></td><td>Ежедневные заметки (52 файла)</td></tr>
-        <tr><td><strong>memorized_diary/</strong></td><td><span class="path">workspace/memorized_diary/</span></td><td>Дневник Kimicito</td></tr>
+        <tr><th>Skill</th><th>Категория</th></tr>
+        <tr><td>ad-creative</td><td>Маркетинг</td></tr>
+        <tr><td>campaign-plan</td><td>Маркетинг</td></tr>
+        <tr><td>channels-setup</td><td>Инфраструктура</td></tr>
+        <tr><td>churn-prevention</td><td>Аналитика</td></tr>
+        <tr><td>content-research-writer</td><td>Контент</td></tr>
+        <tr><td>context-router</td><td>Роутинг</td></tr>
+        <tr><td>copy-editing</td><td>Контент</td></tr>
+        <tr><td>copywriting</td><td>Контент</td></tr>
+        <tr><td>daily-report</td><td>Отчётность</td></tr>
+        <tr><td>humanizer</td><td>AI</td></tr>
+        <tr><td>legal-risk-assessment</td><td>Юридический</td></tr>
+        <tr><td>md-to-pdf</td><td>Форматы</td></tr>
+        <tr><td>openclaw-slides</td><td>Презентации</td></tr>
+        <tr><td>pptx-generator</td><td>Презентации</td></tr>
+        <tr><td>pricing-strategy</td><td>Бизнес</td></tr>
+        <tr><td>process-doc</td><td>Документация</td></tr>
+        <tr><td>saas-metrics-coach</td><td>Аналитика</td></tr>
+        <tr><td>seo-audit</td><td>Маркетинг</td></tr>
+        <tr><td>stt-vosk / vosk</td><td>Распознавание речи</td></tr>
+        <tr><td>theme-factory</td><td>Дизайн</td></tr>
+        <tr><td>wow-presentations</td><td>Презентации</td></tr>
+        <tr><td><span style="text-decoration:line-through;color:#999">smeta.skill.old</span></td><td>Архив (устарел)</td></tr>
       </table>
     </div>
   </div>
 
   <div class="section">
-    <h2>🌐 Интеграции</h2>
+    <h2>📝 Последние коммиты (openclaw-workspace)</h2>
+    <ul class="commit-list">
+      <li><span class="hash">1c16cb6</span><span class="msg">[fix] TOOLS.md — skill priority rules, archive old smeta.skill</span><span class="date">2026-06-28</span></li>
+      <li><span class="hash">bd8b69f</span><span class="msg">[doc] Шаблон ЛСР БИМ + ФЕР-20 PDF — изучение методики</span><span class="date">2026-06-28</span></li>
+      <li><span class="hash">6f0b975</span><span class="msg">[doc] Сравнение моей сметы vs профи — БИМ-методика, 42x ошибка</span><span class="date">2026-06-28</span></li>
+      <li><span class="hash">8aa8b58</span><span class="msg">[fix] eval_smeta.py — исправлен парсинг ВОР</span><span class="date">2026-06-28</span></li>
+      <li><span class="hash">2e04d53</span><span class="msg">[fix] eval_smeta.py + ПРАВИЛО_ВОР.md + ОШИБКИ_АНАЛИЗ.md</span><span class="date">2026-06-28</span></li>
+      <li><span class="hash">4500c96</span><span class="msg">[fix] Смета вентиляция Иркутск — строго по ВОР, без фантазии</span><span class="date">2026-06-28</span></li>
+      <li><span class="hash">c1b6f58</span><span class="msg">[doc] Смета вентиляция Иркутск — README с ВОР и замечаниями</span><span class="date">2026-06-28</span></li>
+      <li><span class="hash">97bddd9</span><span class="msg">auto backup 2026-06-28_03:00</span><span class="date">2026-06-28</span></li>
+      <li><span class="hash">b5fc972</span><span class="msg">[fix] backup.sh pushes to workspace remote, AGENTS.md docs</span><span class="date">2026-06-27</span></li>
+      <li><span class="hash">1c71361</span><span class="msg">[feat] Price-comparison v3.0 — analog matrices, eval, subagents</span><span class="date">2026-06-27</span></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>⚡ Быстрые ссылки</h2>
     <div class="table-wrap">
       <table>
-        <tr><th>Сервис</th><th>Статус</th><th>Назначение</th></tr>
-        <tr><td><strong>Telegram Bot</strong></td><td><span class="badge badge-success">active</span></td><td>Основной канал связи</td></tr>
-        <tr><td><strong>GitHub</strong></td><td><span class="badge badge-success">active</span></td><td>Хостинг кода, GitHub Pages</td></tr>
-        <tr><td><strong>Yandex.Disk</strong></td><td><span class="badge badge-success">active</span></td><td>Бэкапы, хранилище файлов</td></tr>
-        <tr><td><strong>Email (Mail.ru)</strong></td><td><span class="badge badge-success">active</span></td><td>Рассылки art@logistoria.ru</td></tr>
-        <tr><td><strong>Feishu</strong></td><td><span class="badge badge-info">configured</span></td><td>Корпоративный мессенджер</td></tr>
-        <tr><td><strong>Vosk STT</strong></td><td><span class="badge badge-success">active</span></td><td>Распознавание речи (офлайн)</td></tr>
+        <tr><th>Ресурс</th><th>Ссылка</th></tr>
+        <tr><td>Workspace GitHub</td><td><a href="https://github.com/kimicito/openclaw-workspace">github.com/kimicito/openclaw-workspace</a></td></tr>
+        <tr><td>Logistoria Website</td><td><a href="https://github.com/kimicito/logistoria-website">github.com/kimicito/logistoria-website</a></td></tr>
+        <tr><td>Этот дашборд</td><td><a href="https://kimicito.github.io/">kimicito.github.io</a></td></tr>
+        <tr><td>GitHub Profile</td><td><a href="https://github.com/kimicito">github.com/kimicito</a></td></tr>
       </table>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>🐙 GitHub Репозитории</h2>
-    <div class="table-wrap">
-      <table>
-        <tr><th>Репозиторий</th><th>Описание</th><th>Последний push</th><th>Видимость</th></tr>
-        <tr>
-          <td><a href="https://github.com/kimicito/kimicito.github.io" target="_blank"><strong>kimicito.github.io</strong></a></td>
-          <td>Kimicito Status Dashboard — полный расклад по проектам, skills и памяти</td>
-          <td>2026-06-20 20:58 UTC</td>
-          <td><span class="badge badge-success">public</span></td>
-        </tr>
-        <tr>
-          <td><a href="https://github.com/kimicito/logistoria-website" target="_blank"><strong>logistoria-website</strong></a></td>
-          <td>Сайт Логисториа (лендинги, игры, курсы)</td>
-          <td>2026-06-20 11:47 UTC</td>
-          <td><span class="badge badge-success">public</span></td>
-        </tr>
-        <tr>
-          <td><a href="https://github.com/kimicito/openclaw-workspace" target="_blank"><strong>openclaw-workspace</strong></a></td>
-          <td>OpenClaw workspace backup: skills, memory, SOUL, configs</td>
-          <td>2026-06-09 22:15 UTC</td>
-          <td><span class="badge badge-warning">private</span></td>
-        </tr>
-        <tr>
-          <td><a href="https://github.com/kimicito/safemind-landing" target="_blank"><strong>safemind-landing</strong></a></td>
-          <td>Landing page SafeMind (психологическая поддержка)</td>
-          <td>2026-05-23 22:52 UTC</td>
-          <td><span class="badge badge-success">public</span></td>
-        </tr>
-        <tr>
-          <td><a href="https://github.com/kimicito/rusal-dashboard" target="_blank"><strong>rusal-dashboard</strong></a></td>
-          <td>Rusal AI Dashboard v2</td>
-          <td>2026-04-20 17:38 UTC</td>
-          <td><span class="badge badge-success">public</span></td>
-        </tr>
-      </table>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>🏗️ Архитектура хранения</h2>
-    <div class="arch-grid">
-      <div class="arch-card">
-        <h3>Ключевые директории</h3>
-        <ul>
-          <li><span>projects/</span><span class="path">~/.openclaw/workspace/projects</span></li>
-          <li><span>skills/</span><span class="path">~/.openclaw/workspace/skills</span></li>
-          <li><span>memory/</span><span class="path">~/.openclaw/workspace/memory</span></li>
-          <li><span>scripts/</span><span class="path">~/.openclaw/workspace/scripts</span></li>
-          <li><span>logs/</span><span class="path">~/.openclaw/workspace/logs</span></li>
-          <li><span>diary/</span><span class="path">~/.openclaw/workspace/memorized_diary</span></li>
-        </ul>
-      </div>
-      <div class="arch-card">
-        <h3>Конфигурационные файлы</h3>
-        <ul>
-          <li><span>SOUL.md</span><span>Личность и поведение</span></li>
-          <li><span>USER.md</span><span>Профиль пользователя</span></li>
-          <li><span>MEMORY.md</span><span>Долгосрочная память</span></li>
-          <li><span>AGENTS.md</span><span>Правила workspace</span></li>
-          <li><span>TOOLS.md</span><span>Локальные настройки</span></li>
-          <li><span>HEARTBEAT.md</span><span>Расписание задач</span></li>
-        </ul>
-      </div>
     </div>
   </div>
 
   <footer>
-    <p>Kimicito Dashboard · Авто-обновление: ежедневно в 02:00 UTC</p>
-    <p><a href="https://github.com/kimicito/logistoria-website">GitHub</a></p>
+    <p>🐾 Kimicito — твой AI-ассистент | Статус: <span class="badge badge-success">ONLINE</span></p>
+    <p style="margin-top:8px;"><a href="https://github.com/kimicito/openclaw-workspace">openclaw-workspace</a> | Обновляется автоматически</p>
   </footer>
 </div>
 </body>
